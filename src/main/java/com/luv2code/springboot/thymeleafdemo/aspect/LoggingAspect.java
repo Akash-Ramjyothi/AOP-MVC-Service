@@ -35,5 +35,11 @@ public class LoggingAspect {
     public void before(JoinPoint theJoinPoint) {
         String theMethod = theJoinPoint.getSignature().toShortString();
         myLogger.info("=====>> in @Before: calling method: " + theMethod);
+
+        Object[] args = theJoinPoint.getArgs();
+
+        for (Object tempArg : args) {
+            myLogger.info("=====>> arguments: " + tempArg);
+        }
     }
 }
